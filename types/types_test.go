@@ -7,8 +7,7 @@ import (
 	"testing"
 	"unsafe"
 
-	. "github.com/ASparkOfFire/wazergo/types"
-	"github.com/ASparkOfFire/wazero/api"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 func TestLoadAndStoreValue(t *testing.T) {

@@ -1,8 +1,8 @@
 package wasmtest
 
 import (
-	"github.com/ASparkOfFire/wazergo"
-	"github.com/ASparkOfFire/wazero/api"
+	"github.com/ignis-runtime/wazergo"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 // Module is an implementation of wazero's api.Module interface intended to be

@@ -7,11 +7,10 @@ import (
 	"strconv"
 	"testing"
 
-	. "github.com/ASparkOfFire/wazergo"
-	"github.com/ASparkOfFire/wazergo/internal/wasmtest"
-	. "github.com/ASparkOfFire/wazergo/types"
-	"github.com/ASparkOfFire/wazergo/wasm"
-	"github.com/ASparkOfFire/wazero/api"
+	"github.com/ignis-runtime/wazergo/internal/wasmtest"
+	. "github.com/ignis-runtime/wazergo/types"
+	"github.com/ignis-runtime/wazergo/wasm"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 type value[T any] ParamResult[T]

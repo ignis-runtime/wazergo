@@ -4,7 +4,7 @@ package wasm
 import (
 	"fmt"
 
-	"github.com/ASparkOfFire/wazero/api"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 // SEGFAULT is an error type used as value in panics triggered by reading

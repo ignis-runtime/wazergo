@@ -7,8 +7,8 @@ import (
 	"log"
 	"strings"
 
-	. "github.com/ASparkOfFire/wazergo/types"
-	"github.com/ASparkOfFire/wazero/api"
+	. "github.com/ignis-runtime/wazergo/types"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 // Decorator is an interface type which applies a transformation to a function.

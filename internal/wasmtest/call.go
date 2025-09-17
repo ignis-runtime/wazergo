@@ -3,9 +3,9 @@ package wasmtest
 import (
 	"context"
 
-	"github.com/ASparkOfFire/wazergo"
-	"github.com/ASparkOfFire/wazergo/types"
-	"github.com/ASparkOfFire/wazero/api"
+	"github.com/ignis-runtime/wazergo"
+	"github.com/ignis-runtime/wazergo/types"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 func Call[R types.Param[R], T any](fn wazergo.Function[T], ctx context.Context, module api.Module, this T, args ...types.Result) (ret R) {

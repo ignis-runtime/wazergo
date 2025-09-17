@@ -5,29 +5,28 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ASparkOfFire/wazergo"
-	. "github.com/ASparkOfFire/wazergo/types"
-	"github.com/ASparkOfFire/wazero"
-	"github.com/ASparkOfFire/wazero/api"
+	. "github.com/ignis-runtime/wazergo/types"
+	"github.com/ignis-runtime/wazero"
+	"github.com/ignis-runtime/wazero/api"
 )
 
-var hostModule wazergo.HostModule[*hostInstance] = hostFunctions{
-	"answer": wazergo.F0((*hostInstance).Answer),
+var hostModule HostModule[*hostInstance] = hostFunctions{
+	"answer": F0((*hostInstance).Answer),
 }
 
-type hostFunctions wazergo.Functions[*hostInstance]
+type hostFunctions Functions[*hostInstance]
 
 func (m hostFunctions) Name() string {
 	return "test"
 }
 
-func (m hostFunctions) Functions() wazergo.Functions[*hostInstance] {
-	return (wazergo.Functions[*hostInstance](m))
+func (m hostFunctions) Functions() Functions[*hostInstance] {
+	return (Functions[*hostInstance](m))
 }
 
-func (m hostFunctions) Instantiate(ctx context.Context, opts ...wazergo.Option[*hostInstance]) (*hostInstance, error) {
+func (m hostFunctions) Instantiate(ctx context.Context, opts ...Option[*hostInstance]) (*hostInstance, error) {
 	ins := new(hostInstance)
-	wazergo.Configure(ins, opts...)
+	Configure(ins, opts...)
 	return ins, nil
 }
 
@@ -43,8 +42,8 @@ func (m *hostInstance) Answer(ctx context.Context) Int32 {
 	return Int32(m.answer)
 }
 
-func answer(a int) wazergo.Option[*hostInstance] {
-	return wazergo.OptionFunc(func(m *hostInstance) { m.answer = a })
+func answer(a int) Option[*hostInstance] {
+	return OptionFunc(func(m *hostInstance) { m.answer = a })
 }
 
 func TestMultipleHostModuleInstances(t *testing.T) {
@@ -54,9 +53,9 @@ func TestMultipleHostModuleInstances(t *testing.T) {
 	defer runtime.Close(ctx)
 
 	// three copies, all share the same host module name but different state
-	instance0 := wazergo.MustInstantiate(ctx, runtime, hostModule, answer(0))
-	instance1 := wazergo.MustInstantiate(ctx, runtime, hostModule, answer(21))
-	instance2 := wazergo.MustInstantiate(ctx, runtime, hostModule, answer(42))
+	instance0 := MustInstantiate(ctx, runtime, hostModule, answer(0))
+	instance1 := MustInstantiate(ctx, runtime, hostModule, answer(21))
+	instance2 := MustInstantiate(ctx, runtime, hostModule, answer(42))
 
 	defer instance0.Close(ctx)
 	defer instance1.Close(ctx)
@@ -69,9 +68,9 @@ func TestMultipleHostModuleInstances(t *testing.T) {
 	defer guest.Close(ctx)
 
 	answer := guest.ExportedFunction("answer")
-	r0, _ := answer.Call(wazergo.WithModuleInstance(ctx, instance0))
-	r1, _ := answer.Call(wazergo.WithModuleInstance(ctx, instance1))
-	r2, _ := answer.Call(wazergo.WithModuleInstance(ctx, instance2))
+	r0, _ := answer.Call(WithModuleInstance(ctx, instance0))
+	r1, _ := answer.Call(WithModuleInstance(ctx, instance1))
+	r2, _ := answer.Call(WithModuleInstance(ctx, instance2))
 
 	for i, test := range [...]struct{ want, got int }{
 		{want: 0, got: int(r0[0])},

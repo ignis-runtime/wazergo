@@ -3,9 +3,9 @@ package wazergo
 import (
 	"context"
 
-	. "github.com/ASparkOfFire/wazergo/types"
-	"github.com/ASparkOfFire/wazero"
-	"github.com/ASparkOfFire/wazero/api"
+	. "github.com/ignis-runtime/wazergo/types"
+	"github.com/ignis-runtime/wazero"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 // Module is a type constraint used to validate that all module instances

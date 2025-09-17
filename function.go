@@ -3,8 +3,8 @@ package wazergo
 import (
 	"context"
 
-	. "github.com/ASparkOfFire/wazergo/types"
-	"github.com/ASparkOfFire/wazero/api"
+	. "github.com/ignis-runtime/wazergo/types"
+	"github.com/ignis-runtime/wazero/api"
 )
 
 // Functions is a map type representing the collection of functions exported

@@ -1,7 +1,7 @@
 # wazergo
 
 This package is a library of generic types intended to help create WebAssembly
-host modules for [wazero](https://github.com/ASparkOfFire/wazero).
+host modules for [wazero](https://github.com/ignis-runtime/wazero).
 
 ## Motivation
 
@@ -13,7 +13,7 @@ called *host modules*.
 
 When defining host modules, the Go program declares the list of exported
 functions using one of these two APIs of the
-[`wazero.HostFunctionBuilder`](https://pkg.go.dev/github.com/ASparkOfFire/wazero#HostFunctionBuilder):
+[`wazero.HostFunctionBuilder`](https://pkg.go.dev/github.com/ignis-runtime/wazero#HostFunctionBuilder):
 
 ```go
 // WithGoModuleFunction is an advanced feature for those who need higher
@@ -95,7 +95,7 @@ functions. For example:
 
 ```go
 import (
-    . "github.com/ASparkOfFire/wazergo/types"
+    . "github.com/ignis-runtime/wazergo/types"
 )
 
 ...
@@ -197,8 +197,8 @@ employed to define parameters and return values.
 package my_host_module
 
 import (
-    . "github.com/ASparkOfFire/wazergo"
-    . "github.com/ASparkOfFire/wazergo/types"
+    . "github.com/ignis-runtime/wazergo"
+    . "github.com/ignis-runtime/wazergo/types"
 )
 
 var HostModule HostModule[*Module] = functions{
